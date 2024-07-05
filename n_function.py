@@ -24,21 +24,22 @@ def print_expression(node):
         return f"sqrt({left_expr})"
     if node.value == 'pow':
         return f"pow({left_expr}, {right_expr})"
-    return f"({left_expr} {node.value} {right_expr})"
+    return f"{left_expr} {node.value} {right_expr}"
 
 def main():
-    expression = "sqrt(4)"
+    expression = "sqrt(3+5+5)"
     expression = add_one_star_before_standalone_letters(expression)
     tokens = expression.replace(' ', '')
     postfix = infix_to_postfix(tokens)
     print("Postfix:", postfix)
     tree = build_expression_tree(postfix)
     print_tree(tree)
-
-    sorted_tree = order_summation(tree)
-    print_tree(sorted_tree)
-    resulting_expression = print_expression(sorted_tree)
+    resulting_expression = print_expression(tree)
     print("Resulting Expression:", resulting_expression)
+    
+    #sorted_tree = order_summation(tree)
+    #print_tree(sorted_tree)
+   
 
     
  

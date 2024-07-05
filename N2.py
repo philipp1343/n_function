@@ -23,6 +23,17 @@ def order_summation(tree):
             sort(node.right)
             variables = []
             counter[0] = 0
+        elif node.value == 'sqrt':
+            traverse(node.left)
+            variables = sorted(variables, key=lambda x: x[2])
+            sort(node.left)
+            variables = []
+            counter[0] = 0
+            traverse(node.right)
+            variables = sorted(variables, key=lambda x: x[2])
+            sort(node.right)
+            variables = []
+            counter[0] = 0
 
 
     def sort(node):

@@ -53,13 +53,21 @@ def infix_to_postfix(expression):
             stack.append(char)
         elif char == ')':
             if sqrt_pow:
+                while stack and stack[-1] != 'sqrt':
+                    output.append(stack.pop())
                 output.append(stack.pop())
+                sqrt_pow = False
+            elif sqrt_pow:
+                while stack and stack[-1] != 'pow':
+                    output.append(stack.pop())
+                output.append(stack.pop())
+                sqrt_pow = False
             else:
                 while stack and stack[-1] != '(':
                     output.append(stack.pop())
                 stack.pop()
         else:
-            while stack and precedence(stack[-1]) >= precedence(char):
+            while stack and precedence(stack[-1]) >= precedence(char) and not sqrt_pow:
                 output.append(stack.pop())
             stack.append(char)
         i += 1
