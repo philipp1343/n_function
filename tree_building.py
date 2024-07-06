@@ -21,7 +21,7 @@ def precedence(op):
     if op in ['*', '/']:
         return 2
     if op in ['sqrt', 'pow']:
-        return 3
+        return 0
     return 0
 
 def is_operand(char):
@@ -32,6 +32,7 @@ def infix_to_postfix(expression):
     stack = []
     output = []
     sqrt_pow = False
+    sqrt_pow_prec = False
     i = 0
     while i < len(expression):
         char = expression[i]
@@ -39,10 +40,12 @@ def infix_to_postfix(expression):
             stack.append('sqrt')
             i += 4
             sqrt_pow = True
+            sqrt_pow_prec = True
         elif char == 'p' and expression[i:i+4] == 'pow(':
             stack.append('pow')
             i += 3
             sqrt_pow = True
+            sqrt_pow_prec = True
         elif is_operand(char):
             operand = char
             while i + 1 < len(expression) and (expression[i + 1].isalnum() or expression[i + 1] == '.'):
@@ -67,7 +70,7 @@ def infix_to_postfix(expression):
                     output.append(stack.pop())
                 stack.pop()
         else:
-            while stack and precedence(stack[-1]) >= precedence(char) and not sqrt_pow:
+            while stack and precedence(stack[-1]) >= precedence(char):
                 output.append(stack.pop())
             stack.append(char)
         i += 1
