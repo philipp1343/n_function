@@ -6,6 +6,7 @@ from sympy import *
 from N1 import N1
 from N2 import *
 from tree_building import *
+from latex_to_string import latex_to_string
 
 def print_tree(node, level=0, label='.'):
     indent = '   ' * level
@@ -27,8 +28,13 @@ def print_expression(node):
     return f"{left_expr} {node.value} {right_expr}"
 
 def main():
-    expression = "sqrt(5*c + 3*b)"
-    expression = add_one_star_before_standalone_letters(expression)
+
+    expression = r'a·b'
+    expression = latex_to_string(expression)
+    print(expression)
+    n1 = N1(expression)
+    print(n1)
+    '''
     tokens = expression.replace(' ', '')
     postfix = infix_to_postfix(tokens)
     print("Postfix:", postfix)
@@ -38,6 +44,7 @@ def main():
     print_tree(sorted_tree)
     resulting_expression = print_expression(tree)
     print("Resulting Expression:", resulting_expression)
+    '''
    
 
     
