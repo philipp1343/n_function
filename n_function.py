@@ -29,7 +29,7 @@ def print_expression(node):
 
 def main():
 
-    expression = r'a·b'
+    expression = r'a·b × c + ()() ab + bc + a * sqrt()'
     expression = latex_to_string(expression)
     print(expression)
     n1 = N1(expression)
