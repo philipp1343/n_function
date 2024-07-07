@@ -3,9 +3,12 @@ import re
 def latex_to_string(latex_expr):
    
     replacements = {
-        r'\\times': '*',
+        r'\\times': '×',
         r'\\div': '/',
         r'\\sqrt': 'sqrt',
+        r'\\cdot': '·',
+
+        
     }
 
     for latex, string in replacements.items():
@@ -17,4 +20,5 @@ def latex_to_string(latex_expr):
     latex_expr = latex_expr.replace('{', '(').replace('}', ')')
 
     return latex_expr
+
 

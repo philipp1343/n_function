@@ -29,12 +29,11 @@ def print_expression(node):
 
 def main():
 
-    expression = r'a·b × c + ()() ab + bc + a * sqrt()'
+    expression = r'6*x / 1*y'
     expression = latex_to_string(expression)
     print(expression)
-    n1 = N1(expression)
-    print(n1)
-    '''
+   # n1 = N1(expression)
+    #print(n1)
     tokens = expression.replace(' ', '')
     postfix = infix_to_postfix(tokens)
     print("Postfix:", postfix)
@@ -44,7 +43,7 @@ def main():
     print_tree(sorted_tree)
     resulting_expression = print_expression(tree)
     print("Resulting Expression:", resulting_expression)
-    '''
+    
    
 
     

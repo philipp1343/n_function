@@ -104,7 +104,13 @@ def order_product(tree):
         
 
     traverse(tree)
+    
+  
+    
     variables = sorted(variables, key=lambda x: x[2])
+    variables[1*b/2*x]
+    # 1*b/2*x ------ 0.6 * x / 4
+    
     sort(tree)
     return tree
 
@@ -113,3 +119,20 @@ def check_prod(node):
         return True
     if node.left.value.islower() and node.right.value.isdigit():
         return True 
+
+
+  '''
+    variables 
+
+    if division then check if num and denom == digit * variable 
+      variables.append(3,*,x,*p,/,1,*,y)
+
+    op1 = variables.find(isdigit())
+    op2 = variables.find(isdigit())
+    expr1 = op1 +'/' + op2
+    expr2 = .... 
+    expr1 + expr2 = result 
+
+    3 * x * p ....  / 1 * y ... 
+    -> 6/1 * x*p/y
+    '''
